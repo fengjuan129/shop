@@ -40,6 +40,33 @@ const router = new Router({
             import(/* webpackChunkName: "hello" */ '../components/HelloWorld')
           ),
         },
+        {
+          path: '/',
+          component: asyncLoader(() =>
+            import(/* webpackChunkName: "hello" */ '../views/fj/index.vue')
+          ),
+          children: [
+            {
+              path: '/',
+              component: asyncLoader(() =>
+                import(/* webpackChunkName: "hello" */ '../views/fj/shopList.vue')
+              ),
+            },
+            {
+              path: '/shopDetail/:id',
+              name: 'shopDetail',
+              component: asyncLoader(() =>
+                import(/* webpackChunkName: "hello" */ '../views/fj/shopDetail.vue')
+              ),
+            },
+            {
+              path: '/shopCart',
+              component: asyncLoader(() =>
+                import(/* webpackChunkName: "hello" */ '../views/fj/shopCart.vue')
+              ),
+            },
+          ],
+        },
       ],
     },
     // 配置404路由
