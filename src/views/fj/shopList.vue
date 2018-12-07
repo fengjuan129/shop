@@ -8,7 +8,7 @@
             <img :src="item.picUrl">
             <div class="item-title">{{item.name}}</div>
             <div class="item-price">
-                价格:<span class="price">{{item.price}} ￥</span>
+                价格:<span class="price">{{item.price | formatPrice}} </span>
             </div>
           </router-link>
       </div>
@@ -43,6 +43,12 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+  },
+  filters: {
+    formatPrice(value) {
+      if (!value) return '';
+      return `${value.toFixed(2)} ￥`;
     },
   },
 };

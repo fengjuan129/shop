@@ -37,13 +37,13 @@ export default {
     ...mapMutations('shop', ['addCart']),
     addCarts() {
       if (this.isAddCart() < 0) {
-        this.addCart({ num: 1, ...this.item });
+        this.addCart({ number: 1, ...this.item });
       }
     },
     isAddCart() {
-      var cartList = this.cartList;
+      const cartLists = this.cartList;
       console.log(this.cartList.length);
-      return cartList.findIndex(aitem => aitem.id === this.item.id);
+      return cartLists.findIndex(aitem => aitem.id === this.item.id);
     },
   },
 };

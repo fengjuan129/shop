@@ -1,13 +1,16 @@
 <template>
    <div id="container">
       <Header />
-      <router-view></router-view>
+
+        <router-view class="main"></router-view>
+
       <div id="cta-footer">
-          <router-link to="/">
+          <router-link to="/" >
               列表首页
           </router-link>
           <router-link to="/shopCart">
                购物车
+               <span v-if="cartList.length>0" class="cartNum">({{cartList.length}})</span>
           </router-link>
       </div>
    </div>
@@ -20,11 +23,21 @@ export default {
   components: {
     Header,
   },
+  computed: {
+    cartList() {
+      return this.$store.state.shop.cartList;
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
 #container {
   margin: -20px;
+  .main {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
   #cta-footer {
     position: fixed;
     bottom: 0;

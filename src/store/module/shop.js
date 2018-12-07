@@ -9,16 +9,17 @@ export default {
       state.topHeader = header || '';
     },
     addCart(state, item) {
-      console.log(item);
       state.cartList.push(item);
     },
-    delCart(state, item) {
-      const index = state.cartList.indexOf(item);
+    delCart(state, index) {
+      // const index = state.cartList.indexOf(item);
       state.cartList.splice(index, 1);
     },
-    // updataNumber:(state, num)=>{
-
-    // },
+    updataNumber: (state, data) => {
+      // index为操作第几个元素，key为要改变的key,value为新的值
+      const { index, key, value } = data;
+      state.cartList[index][key] = value;
+    },
   },
   actions: {},
   getters: {
